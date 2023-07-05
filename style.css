@@ -32,30 +32,44 @@ section.alternate-background {
 }
 
 main img {
-  width: 100px;
+  /* all images match the width of the conatiners they're in */
+  width: 100%;
 }
+
 
 /* ---  Groups & Items --- */
 
 .group {
+  /* all groups display in columns for mobile */
   display: flex;
   flex-direction: column;
+  /* add margin to the bottom of each group for better visual spacing */
+  margin-bottom: 20px;
 }
 
 .item {
+  /* items equal size */
   flex: 1;
   margin: 10px;
 }
 
 .item-double {
+  /* items twice as big as others */
   flex: 2;
 }
+
+.form-item {
+  /* spacing inside form so labels are on the left and inputs on the right */
+  display: flex;
+  justify-content: space-between;
+}
+
 
 /* -------  Navigation ------- */
 
 header {
   background-color: #83092e;
-  padding: 20px 20px 0 20px;
+  padding: 20px 20px 0px 20px;
   text-align: center;
 }
 
@@ -63,6 +77,18 @@ header {
   font-family: "Tangerine", cursive;
   font-size: 72px;
   color: #ecdbc9;
+}
+
+header nav {
+  /* making whole nav a flexbox creates better visual spacing */
+  display: flex;
+  justify-content: center;
+}
+
+header nav ul {
+  /* make navigation bar a flexbox and centered */
+  display: flex;
+  justify-content: center;
 }
 
 header nav ul li {
@@ -80,7 +106,9 @@ header nav ul li a:hover {
   text-decoration: none;
 }
 
+
 /* -------  Join Form ------- */
+
 form {
   border: 2px solid #6b1a22;
   padding: 10px;
@@ -105,6 +133,7 @@ form button {
   width: 100%;
 }
 
+
 /* -------  Footer ------- */
 
 footer {
@@ -117,4 +146,38 @@ footer p {
   padding: 20px;
 }
 
+
 /* -------  Media Query ------- */
+
+@media all and (min-width: 480px) {
+  /* applies new formatting to screens 480px or larger */
+  header {
+    display: flex;
+    /* pushes the items (the title and nav) to the far sides of the browser with space between them. */
+    justify-content: space-between;
+  }
+
+  header nav {
+    /* pushes the nav container down by 8 pixels to make it present a little better visually within the space. */
+    margin-top: 8px;
+  }
+
+  .group {
+    /* switch to rows instead of columns on larger screens */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .blog-group {
+    /* wrap the 4 blog group's items onto 2 lines */
+    flex-wrap: wrap;
+    /* fixes last blog item spacing on cross-axis */
+    align-items: flex-start;
+  }
+
+  .blog-item {
+    /* makes items wrap onto 2 lines */
+    flex: 1 0 40%;
+  }
+}
